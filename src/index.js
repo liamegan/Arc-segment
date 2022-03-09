@@ -8,8 +8,6 @@ import { Arc } from "./Arc.js";
 import { ArcSet } from "./Arcset.js";
 console.clear();
 
-console.log("hello")
-
 const config = {
   drawingType: 2,
   dimensions: new Vec2(window.innerWidth, window.innerHeight),

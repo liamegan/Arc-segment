@@ -2,10 +2,10 @@
   "name": "arc-segment",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.html",
+  "main": "src/index.pug",
   "scripts": {
-    "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html --public-url /"
+    "start": "parcel src/index.pug --open",
+    "build": "parcel build src/index.pug --public-url /"
   },
   "browserslist": [
     "last 3 and_chr versions",
@@ -31,7 +31,8 @@
     "wtc-math": "^1.0.14"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5"
+    "@babel/core": "^7.17.5",
+    "pug": "^3.0.2"
   },
   "resolutions": {
     "@babel/preset-env": "7.13.8"
