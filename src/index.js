@@ -14,6 +14,7 @@ const config = {
 };
 const vars = {
   drawing: null,
+  mouse: new Vec2(0,0)
 };
 
 vars.drawing = new Drawing(config.drawingType)
@@ -40,10 +41,71 @@ const setup = () => {
 };
 
 
-const drawStep = () => {};
+const drawStep = () => {
+  requestAnimationFrame(drawStep);
+  
+  vars.drawing.clear();
+
+  const a = config.dimensions.scaleNew(0.5);
+  const b = vars.mouse;
+  const ab = a.subtractNew(b);
+  const ba = b.subtractNew(a);
+  const c = b.addNew(ab.scaleNew(.5));
+  
+  const sa = 0;
+  const cao = sa - ab.angle;
+  const coa = Math.PI - cao - 1.5708;
+
+  const co = new Vec2(1, 0);
+  co.angle = coa;
+  co.length = ab.length * 0.5 * Math.tan(cao);
+  const o = c.subtractNew(co);
+  // o.length = a.subtractNew(o).length;
+  
+  
+  // const p = config.dimensions.scaleNew(0.5);
+  // const md = vars.mouse.subtractNew(p);
+
+  const r = co.length * .5;
+
+  // // const r = 100;
+  // const sa = 0;
+  const arcc = a.subtractNew(new Vec2(Math.cos(sa) * r, Math.sin(sa) * r));
+  // // md.resetToVector(vars.mouse.subtractNew(c));
+  const ea = Math.PI*2 + ba.angle;
+
+  const arc = new Arc({
+    c: arcc, // The center point
+    rx: r, // Major radius
+    ry: r, // Minor radius
+    t1: sa, // Start angle
+    Δ: ea, // End angle - should always be positive
+    φ: 0, // Rotation
+  });
+  
+
+  vars.drawing.stroke = '#CCCC00';
+  vars.drawing.circle(a, 5);
+  vars.drawing.circle(b, 5);
+  vars.drawing.line(a, b);
+  vars.drawing.circle(c, 5);
+  // const cao = sa - p.subtractNew(vars.mouse).angle;
+  // const coa = Math.PI - cao - 1.5708;
+  // vars.drawing.line(a, a.subtractNew(ao));
+  vars.drawing.line(c, o);
+  vars.drawing.line(a, o);
+  vars.drawing.circle(o, 5);
+
+  
+  vars.drawing.stroke = "#333333";
+  vars.drawing.path(arc.svgArc);
+};
 let interval;
 const draw = () => {
   const p = config.dimensions.scaleNew(0.5);
+
+  requestAnimationFrame(drawStep);
+
 
   const arcset = new ArcSet(p);
   let n = 30;
@@ -89,4 +151,7 @@ window.addEventListener("resize", (e) => {
     vars.drawing.dimensions = config.dimensions;
     setup();
   }, 200);
+});
+window.addEventListener('pointermove', (e) => {
+  vars.mouse.reset(e.x, e.y);
 });
