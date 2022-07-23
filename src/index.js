@@ -51,9 +51,10 @@ const drawStep = () => {
   const ab = a.subtractNew(b);
   const c = b.addNew(ab.scaleNew(.5));
   
-  const sa = 0;
+  const sa = Math.PI * .3;
+  // const sa = 0;
   const cao = sa - ab.angle;
-  const coa = Math.PI - cao - 1.5708;
+  const coa = Math.PI - cao - 1.5708 + sa;
 
   const co = new Vec2(1, 0);
   co.angle = coa;
@@ -65,7 +66,7 @@ const drawStep = () => {
   const r = ao.length;
 
   const arcc = a.subtractNew(new Vec2(Math.cos(sa) * r, Math.sin(sa) * r));
-  const ea = Math.PI*2 + bo.angle;
+  const ea = Math.PI*2 + bo.angle - sa;
 
   const arc = new Arc({
     c: arcc, // The center point
