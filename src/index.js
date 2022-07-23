@@ -60,13 +60,14 @@ const drawStep = () => {
   co.angle = coa;
   co.length = ab.length * 0.5 * Math.tan(cao);
   const o = c.subtractNew(co);
+  const ao = a.subtractNew(o);
   // o.length = a.subtractNew(o).length;
   
   
   // const p = config.dimensions.scaleNew(0.5);
   // const md = vars.mouse.subtractNew(p);
 
-  const r = co.length * .5;
+  const r = ao.length;
 
   // // const r = 100;
   // const sa = 0;
@@ -94,6 +95,7 @@ const drawStep = () => {
   // vars.drawing.line(a, a.subtractNew(ao));
   vars.drawing.line(c, o);
   vars.drawing.line(a, o);
+  vars.drawing.line(b, o);
   vars.drawing.circle(o, 5);
 
   
