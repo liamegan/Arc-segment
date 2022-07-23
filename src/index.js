@@ -61,6 +61,7 @@ const drawStep = () => {
   co.length = ab.length * 0.5 * Math.tan(cao);
   const o = c.subtractNew(co);
   const ao = a.subtractNew(o);
+  const bo = b.subtractNew(o);
   // o.length = a.subtractNew(o).length;
   
   
@@ -73,7 +74,7 @@ const drawStep = () => {
   // const sa = 0;
   const arcc = a.subtractNew(new Vec2(Math.cos(sa) * r, Math.sin(sa) * r));
   // // md.resetToVector(vars.mouse.subtractNew(c));
-  const ea = Math.PI*2 + ba.angle;
+  const ea = Math.PI*2 + bo.angle;
 
   const arc = new Arc({
     c: arcc, // The center point
