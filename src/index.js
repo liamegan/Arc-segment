@@ -49,7 +49,6 @@ const drawStep = () => {
   const a = config.dimensions.scaleNew(0.5);
   const b = vars.mouse;
   const ab = a.subtractNew(b);
-  const ba = b.subtractNew(a);
   const c = b.addNew(ab.scaleNew(.5));
   
   const sa = 0;
@@ -62,18 +61,10 @@ const drawStep = () => {
   const o = c.subtractNew(co);
   const ao = a.subtractNew(o);
   const bo = b.subtractNew(o);
-  // o.length = a.subtractNew(o).length;
-  
-  
-  // const p = config.dimensions.scaleNew(0.5);
-  // const md = vars.mouse.subtractNew(p);
 
   const r = ao.length;
 
-  // // const r = 100;
-  // const sa = 0;
   const arcc = a.subtractNew(new Vec2(Math.cos(sa) * r, Math.sin(sa) * r));
-  // // md.resetToVector(vars.mouse.subtractNew(c));
   const ea = Math.PI*2 + bo.angle;
 
   const arc = new Arc({
@@ -91,9 +82,6 @@ const drawStep = () => {
   vars.drawing.circle(b, 5);
   vars.drawing.line(a, b);
   vars.drawing.circle(c, 5);
-  // const cao = sa - p.subtractNew(vars.mouse).angle;
-  // const coa = Math.PI - cao - 1.5708;
-  // vars.drawing.line(a, a.subtractNew(ao));
   vars.drawing.line(c, o);
   vars.drawing.line(a, o);
   vars.drawing.line(b, o);
