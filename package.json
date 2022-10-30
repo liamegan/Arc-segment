@@ -26,6 +26,7 @@
   "homepage": "https://github.com/liamegan/Arc-segment#readme",
   "dependencies": {
     "@liamegan1/le-utils": "^0.0.2",
+    "dat.gui": "^0.7.9",
     "le-sketcher": "^0.0.3",
     "parcel-bundler": "^1.12.5",
     "wtc-math": "^1.0.14"
